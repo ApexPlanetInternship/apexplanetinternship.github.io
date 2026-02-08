@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Certificate Validation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body{
+      margin:0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:#f3f5f7;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .wrapper{
+      width:100%;
+      max-width:520px;
+      padding:18px;
+    }
+    .card{
+      background:#fff;
+      border-radius:10px;
+      box-shadow:0 6px 16px rgba(0,0,0,.12);
+      overflow:hidden;
+      text-align:center;
+    }
+    .topbar{
+      height:6px;
+      background:#43a047; /* green bar */
+    }
+    .brand{
+      padding:14px 16px 6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .brand .logo{
+      font-weight:700;
+      color:#2e7d32;
+      font-size:18px;
+    }
+    .status{
+      color:#43a047;
+      font-weight:700;
+      font-size:20px;
+      margin:6px 0 10px;
+    }
+    .text{
+      padding:0 22px 22px;
+      color:#444;
+      font-size:14px;
+      line-height:1.55;
+    }
+    .text strong{ color:#222; }
+    .invalid{
+      color:#c62828;
+      font-weight:700;
+      font-size:18px;
+      margin:14px 0;
+    }
+    .foot{
+      font-size:11px;
+      color:#888;
+      padding-bottom:14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="card" id="box">
+    <div class="topbar"></div>
+    <div class="brand">
+      <div class="logo">Certificate Portal</div>
+    </div>
+    <div class="status">Checking…</div>
+    <div class="text">Please wait.</div>
+  </div>
+</div>
+
+<script>
+  /* ===== DEMO DATA (EDIT ONLY HERE) ===== */
+  const certificates = {
+    "APSPL266482": {
+      name: "Nandani Kumari",
+      program: "Web Development with HTML, CSS, and JavaScript Internship",
+      duration: "01 January 2026 – 30 January 2026"
+    },
+    "APSPL266483": {
+      name: "Ragini Kumari",
+      program: "Web Development with HTML, CSS, and JavaScript Internship",
+      duration: "01 January 2026 – 30 January 2026"
+    }
+  };
+  /* ===================================== */
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const cert = certificates[id];
+
+  const box = document.getElementById("box");
+
+  if(cert){
+    box.innerHTML = `
+      <div class="topbar"></div>
+      <div class="brand">
+        <div class="logo">Certificate Portal</div>
+      </div>
+      <div class="status">Certificate Validated</div>
+      <div class="text">
+        This certificate is valid. Congratulations, <strong>${cert.name}</strong>!<br><br>
+        You have successfully completed the internship in
+        <strong>${cert.program}</strong>
+        from <strong>${cert.duration}</strong>.
+        <br><br>
+        <strong>Certificate ID:</strong> ${id}
+      </div>
+      <div class="foot">Online Certificate Verification (Demo)</div>
+    `;
+  }else{
+    box.innerHTML = `
+      <div class="topbar"></div>
+      <div class="brand">
+        <div class="logo">Certificate Portal</div>
+      </div>
+      <div class="invalid">Invalid Certificate</div>
+      <div class="text">No record found for this Certificate ID.</div>
+      <div class="foot">Online Certificate Verification (Demo)</div>
+    `;
+  }
+</script>
+
+</body>
+</html>
