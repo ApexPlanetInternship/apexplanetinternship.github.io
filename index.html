@@ -56,20 +56,14 @@
 </div>
 
 <script>
-  /* ===== CERTIFICATE DATA (EDIT HERE ONLY) ===== */
   const certificates = {
     "APSPL266482": {
-      name: "Nandani Kumari",
-      program: "Web Development Internship",
-      duration: "01 January 2026 – 30 January 2026"
+      name: "Nandani Kumari"
     },
     "APSPL266483": {
-      name: "Ragini Kumari",
-      program: "Web Development Internship",
-      duration: "01 January 2026 – 30 January 2026"
+      name: "Ragini Kumari"
     }
   };
-  /* ============================================ */
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
@@ -78,24 +72,29 @@
 
   if(cert){
     box.innerHTML = `
-      <img src="logo.jpeg" alt="Logo" class="logo">
+      <img src="logo.png" alt="Logo" class="logo">
 
-      <h2>Certificate Validated ✔</h2>
+      <h2>Certificate Validated</h2>
 
-      <p><strong>Name:</strong> ${cert.name}</p>
-      <p><strong>Program:</strong> ${cert.program}</p>
-      <p><strong>Duration:</strong> ${cert.duration}</p>
+      <p>
+        This certificate is valid. Congratulations, <strong>${cert.name}</strong>!
+        You have successfully completed the <strong>60 Hours</strong> internship in
+        <strong>Web Development with HTML, CSS, and JavaScript</strong>
+        from <strong>01 January, 2026</strong> to <strong>30 January, 2026</strong>.
+      </p>
+
       <p><strong>Certificate ID:</strong> ${id}</p>
     `;
   } else {
     box.innerHTML = `
-      <img src="logo.jpeg" alt="Logo" class="logo">
+      <img src="logo.png" alt="Logo" class="logo">
 
-      <h2 class="invalid">Invalid Certificate ❌</h2>
+      <h2 style="color:red">Invalid Certificate</h2>
       <p>No record found.</p>
     `;
   }
 </script>
+
 
 </body>
 </html>
