@@ -107,28 +107,28 @@
     box.innerHTML = `
       <div class="topbar"></div>
       <div class="brand">
-        <div class="logo">Certificate Portal</div>
-      </div>
+        <img src="Apexplanetlogo.jpeg" alt="Logo" class="logo">
+
       <div class="status">Certificate Validated</div>
       <div class="text">
-        This certificate is valid. Congratulations, <strong>${cert.name}</strong>!<br><br>
+        This certificate is valid. Congratulations, <strong>${cert.name}</strong>!<br>
         You have successfully completed the internship in
         <strong>${cert.program}</strong>
         from <strong>${cert.duration}</strong>.
-        <br><br>
+        <br>
         <strong>Certificate ID:</strong> ${id}
       </div>
-      <div class="foot">Online Certificate Verification (Demo)</div>
+      <div class="foot">Online Certificate Verification</div>
     `;
   }else{
     box.innerHTML = `
       <div class="topbar"></div>
       <div class="brand">
-        <div class="logo">Certificate Portal</div>
-      </div>
+        <img src="logo.png" alt="Logo" class="logo">
+
       <div class="invalid">Invalid Certificate</div>
       <div class="text">No record found for this Certificate ID.</div>
-      <div class="foot">Online Certificate Verification (Demo)</div>
+      <div class="foot">Online Certificate Verification</div>
     `;
   }
 </script>
