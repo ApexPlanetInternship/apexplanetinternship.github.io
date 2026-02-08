@@ -1,134 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Certificate Validation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>Certificate Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body{
       margin:0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background:#f3f5f7;
+      font-family: Arial, sans-serif;
+      background:#f2f2f2;
       min-height:100vh;
       display:flex;
       justify-content:center;
       align-items:center;
     }
-    .wrapper{
-      width:100%;
-      max-width:520px;
-      padding:18px;
-    }
+
     .card{
-      background:#fff;
+      background:#ffffff;
+      width:90%;
+      max-width:420px;
+      padding:25px;
       border-radius:10px;
-      box-shadow:0 6px 16px rgba(0,0,0,.12);
-      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      border-top:6px solid #2e7d32;
       text-align:center;
     }
-    .topbar{
-      height:6px;
-      background:#43a047; /* green bar */
+
+    .logo{
+      width:120px;
+      margin-bottom:15px;
     }
-    .brand{
-      padding:14px 16px 6px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-    }
-    .brand .logo{
-      font-weight:700;
+
+    h2{
       color:#2e7d32;
-      font-size:18px;
+      margin-bottom:15px;
     }
-    .status{
-      color:#43a047;
-      font-weight:700;
-      font-size:20px;
-      margin:6px 0 10px;
-    }
-    .text{
-      padding:0 22px 22px;
-      color:#444;
+
+    p{
       font-size:14px;
-      line-height:1.55;
+      margin:8px 0;
+      color:#333;
     }
-    .text strong{ color:#222; }
+
     .invalid{
-      color:#c62828;
-      font-weight:700;
-      font-size:18px;
-      margin:14px 0;
-    }
-    .foot{
-      font-size:11px;
-      color:#888;
-      padding-bottom:14px;
+      color:red;
+      font-weight:bold;
     }
   </style>
 </head>
 <body>
 
-<div class="wrapper">
-  <div class="card" id="box">
-    <div class="topbar"></div>
-    <div class="brand">
-      <div class="logo">Certificate Portal</div>
-    </div>
-    <div class="status">Checking…</div>
-    <div class="text">Please wait.</div>
-  </div>
+<div class="card" id="result">
+  Checking certificate…
 </div>
 
 <script>
-  /* ===== DEMO DATA (EDIT ONLY HERE) ===== */
+  /* ===== CERTIFICATE DATA (EDIT HERE ONLY) ===== */
   const certificates = {
     "APSPL266482": {
       name: "Nandani Kumari",
-      program: "Web Development with HTML, CSS, and JavaScript Internship",
+      program: "Web Development Internship",
       duration: "01 January 2026 – 30 January 2026"
     },
     "APSPL266483": {
       name: "Ragini Kumari",
-      program: "Web Development with HTML, CSS, and JavaScript Internship",
+      program: "Web Development Internship",
       duration: "01 January 2026 – 30 January 2026"
     }
   };
-  /* ===================================== */
+  /* ============================================ */
 
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const cert = certificates[id];
-
-  const box = document.getElementById("box");
+  const box = document.getElementById("result");
 
   if(cert){
     box.innerHTML = `
-      <div class="topbar"></div>
-      <div class="brand">
-        <img src="Apexplanetlogo.jpeg" alt="Logo" class="logo">
+      <img src="logo.jpeg" alt="Logo" class="logo">
 
-      <div class="status">Certificate Validated</div>
-      <div class="text">
-        This certificate is valid. Congratulations, <strong>${cert.name}</strong>!<br>
-        You have successfully completed the internship in
-        <strong>${cert.program}</strong>
-        from <strong>${cert.duration}</strong>.
-        <br>
-        <strong>Certificate ID:</strong> ${id}
-      </div>
-      <div class="foot">Online Certificate Verification</div>
+      <h2>Certificate Validated ✔</h2>
+
+      <p><strong>Name:</strong> ${cert.name}</p>
+      <p><strong>Program:</strong> ${cert.program}</p>
+      <p><strong>Duration:</strong> ${cert.duration}</p>
+      <p><strong>Certificate ID:</strong> ${id}</p>
     `;
-  }else{
+  } else {
     box.innerHTML = `
-      <div class="topbar"></div>
-      <div class="brand">
-        <img src="logo.png" alt="Logo" class="logo">
+      <img src="logo.jpeg" alt="Logo" class="logo">
 
-      <div class="invalid">Invalid Certificate</div>
-      <div class="text">No record found for this Certificate ID.</div>
-      <div class="foot">Online Certificate Verification</div>
+      <h2 class="invalid">Invalid Certificate ❌</h2>
+      <p>No record found.</p>
     `;
   }
 </script>
